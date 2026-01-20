@@ -1,0 +1,7 @@
+read_mmmc ../work/STYLUS_DB/viewDefinition.tcl
+
+read_netlist "../../design/ECO_INIT_11_optSetup.enc.dat/dtmf_recvr_core.v.gz" -top dtmf_recvr_core
+init_design 
+
+
+

@@ -1,0 +1,13 @@
+set_multi_cpu_usage -local_cpu 16
+
+read_mmmc ../work/STYLUS_DB/viewDefinition_view2.tcl
+
+read_netlist  "../../design/ECO_INIT_11_optSetup.enc.dat/dtmf_recvr_core.v.gz" -top dtmf_recvr_core  
+init_design
+
+read_spef -rc_corner corner_worst_RCMIN "../../design/SPEF/corner_worst_RCMIN.spef.gz"
+
+write_db view2_logical_cui   
+
+
+

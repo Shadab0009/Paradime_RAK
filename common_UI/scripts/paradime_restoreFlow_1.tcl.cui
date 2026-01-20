@@ -1,0 +1,21 @@
+set_distributed_hosts -local -time_out 60
+set_multi_cpu_usage -local_cpu 4 -remote_host 2 -cpu_per_remote_host 2
+    
+set_distributed_mmmc_mode -eco_merge_mmmc -eco true    
+set_db eco_setup_view_list {func_slow_RCMAX func_slow_RCMIN}
+set_db eco_hold_view_list {func_slow_RCMAX func_slow_RCMIN}
+
+distribute_read_db -read_db {view1_logical_cui view2_logical_cui} -out_dir restore_mode2_cui 
+
+
+set_db opt_signoff_retime path_slew_propagation
+set_db opt_signoff_allow_multiple_incremental true
+set_db opt_signoff_verbose true
+opt_signoff -setup
+opt_signoff -hold
+opt_signoff -drv
+opt_signoff -power
+opt_signoff -area
+
+
+

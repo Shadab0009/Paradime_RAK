@@ -1,0 +1,3 @@
+source ../scripts/spef.tcl
+set_db delaycal_enable_si true
+
